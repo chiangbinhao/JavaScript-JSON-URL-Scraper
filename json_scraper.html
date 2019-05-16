@@ -13,35 +13,35 @@ var url = "https://api.myjson.com/bins/1dcjgq";
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myArr = JSON.parse(this.responseText);
-    var jsonLength = myArr.length
+    var jsonLength = myArr.length;
     var i;
     // Reference for RegExpr: https://www.w3schools.com/jsref/jsref_obj_regexp.asp
     // Reference for RegExpr for url: https://stackoverflow.com/a/6041965
     var pattern = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/gi;
     for (i = 1; i <= jsonLength; i++) {
         document.write("(" + i + ") JSON Object<br>");
-        document.write("id: " + myArr[i-1]._id + "<br>")
-        document.write("index: " + myArr[i-1].index + "<br>")
-        document.write("balance: " + myArr[i-1].balance + "<br>")
+        document.write("id: " + myArr[i-1]._id + "<br>");
+        document.write("index: " + myArr[i-1].index + "<br>");
+        document.write("balance: " + myArr[i-1].balance + "<br>");
         //This is for JSON Object which only contains a link with no other data
         /*if(myArr[i-1].picture.match(pattern)) {
-            document.write("picture: " + myArr[i-1].picture.link(myArr[i-1].picture) + "<br>")
+            document.write("picture: " + myArr[i-1].picture.link(myArr[i-1].picture) + "<br>");
         }*/
         
         //var newPicture = myArr[i-1].picture;
         
         // Added padding in front and in between 2 urls
-        var newPicture = "padding " + myArr[i-1].picture.match(pattern) + " padding " + "http://www.google.com"
+        var newPicture = "padding " + myArr[i-1].picture.match(pattern) + " padding " + "https://www.google.com";
         // Reference for match() function: https://www.w3schools.com/jsref/jsref_match.asp
-        var urls = newPicture.match(pattern)
+        var urls = newPicture.match(pattern);
         if(urls) {
             var j;
             for (j = 1; j <= urls.length; j++) {
                 // Reference for link() function: https://www.w3schools.com/jsref/jsref_link.asp
-                document.write("picture" + j + ": " + urls[j-1].link(urls[j-1]) + "<br>")
+                document.write("picture" + j + ": " + urls[j-1].link(urls[j-1]) + "<br>");
             }
         }
-        document.write("name: " + myArr[i-1].name + "<br><br>")
+        document.write("name: " + myArr[i-1].name + "<br><br>");
     }
   }
 };
